@@ -14,8 +14,7 @@ def clean_data(players): # Using players data set
         else:
             fixed['experience'] = False # Translates "YES/NO" into a boolean value of True or False via if/else statement
         # fixed['height'] = int(player['height'])
-        fixed['height'] = int(player['height'].split()[0]) 
-        # Translates string into integer value and removes "inches"
+        fixed['height'] = int(player['height'].split()[0]) # Translates string into integer value and removes "inches"
         cleaned.append(fixed) # Appends the fixed dictionary to the cleaned list
     return cleaned # Returns the cleaned list
 print(clean_data(PLAYERS)) # Prints the cleaned list

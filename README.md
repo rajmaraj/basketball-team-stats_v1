@@ -19,8 +19,3 @@ In this project you will be writing a program that reads from the "constants" da
 
 
 If you get stuck, try to work through the problem. Sometimes it helps to try to write/draw out your steps on paper in the order your program should run in and solve each step 1 at a time. If you are still stuck be sure to reach out in the Python Techdegree #unit-02 Slack channel.
-
-Hello
-asd;fuahdf;ajhsdf
-ahsd;fakjhdsfa;kds
-ahsdkfahsd;fkajhsdf

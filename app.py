@@ -7,7 +7,8 @@ def clean_data(players): # Using players data set
     for player in players: # Iterating through the players list
         fixed = {} # Empty dictionary
         fixed['name'] = player['name'] # Maps "name" from constants to "name" in app
-        fixed['guardians'] = player['guardians'] # Maps "guardians" from constants to "guardians" in app
+        fixed['guardians'] = player['guardians'].split(' and ') # Maps "guardians" and splits the string into a list at 'and'
+        fixed['experience'] = player['experience'] # Maps "experience" from constants to "experience" in app
         if player['experience'] == 'YES':
             fixed['experience'] = True
         else:

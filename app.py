@@ -1,6 +1,13 @@
-from constants import TEAMS
-from constants import PLAYERS
+from constants import TEAMS, PLAYERS
 # Import data from dictionaries under constants file
+
+
+""" 
+This data should be cleaned fom constants,
+height should be an integer,
+experience should be a boolean value,
+guardians should be a split by 'and' string into a list.
+"""
 
 def clean_data(players): # Using players data set
     cleaned = [] # Empty list
@@ -19,34 +26,69 @@ def clean_data(players): # Using players data set
     return cleaned # Returns the cleaned list
 # print(clean_data(PLAYERS)) # Prints the cleaned list
 
-cleaned_players = clean_data(PLAYERS) # Assigns the cleaned list to a variable
-def assign_to_teams(players, teams):
-    team_rosters = {team: [] for team in teams}
-    team_index = 0 # Creates a dictionary with the teams as keys and empty lists as values
-    
-    for player in players:
-        team_name = teams[team_index]  # Get the current team by index
-        team_rosters[team_name].append(player)  # Add player to the team roster
-        team_index = (team_index + 1) % len(teams) 
-    return team_rosters
-assigned_teams = assign_to_teams(cleaned_players, TEAMS)
-# print(assigned_teams)
+# # print just 'guardians' from the list of players
+# def guardians_list(players):
+#     guardian_list = []
+#     for player in players:
+#         guardian_list.extend(player['guardians'])
+#     return guardian_list
+# # print(guardians_list(clean_data(PLAYERS)))
 
-for team, players in assigned_teams.items():
-    print(f"{team}:")
-    player_names = [player['name'] for player in players]  # Extract only the names
-    print(player_names)
 
+# # print just 'name' from the list of players
+# def player_list(players):
+#     player_list = []
+#     for player in players:
+#         player_list.append(player['name'])
+#     return player_list
+# # print(player_list(clean_data(PLAYERS)))
 
 
 
+"""
+Assign players to each team so the teams are evenly balanced by total players.
+The order in which you assign the players does not matter but should be balanced when team assignment is finished.
+The same player cannot be assigned to multiple teams.
+"""
+
+def draft_players(players): # Function designed to distribute players into 3 teams.
+    global panthers, bandits, warriors # Allows function to modify team outside of function.
+    experienced = []# Empty list
+    inexperienced = []# Empty list
+    panthers = []# Empty list
+    bandits = []# Empty list
+    warriors = []# Empty list
+
+    for player in players: # Iterates through all players and separates them into exp or not exp.
+        if player['experience'] == True:
+            experienced.append(player) # Sent to exp list
+        else:
+            inexperienced.append(player) # Sent to non exp list
 
 
-# # Assign players to 3 teams so the teams are evenly balanced by total players.
-# def balance_teams(players, teams): # Using players data set and TEAMS list
-#     num_players_team = len(players) // len(teams) # Divides the total number of players by the number of teams
-#     team_players = [] # Empty list
-#     for i in range(0, len(players), num_players_team): # Iterates through the players list by the number of players per team
-#         team_players.append(players[i:i + num_players_team]) # Appends the players to the team_players list
-#     return team_players # Returns the team_players list
-# print(balance_teams(clean_data(PLAYERS), TEAMS)) # Prints the team_players list
+# This function should assign the players as evenly as possible to all three teams.
+# If there are not enough players in one of the experience levels, 
+# Then the remaining players should be assigned to the teams with fewer players.
+# The distribution method uses division to assign players to teams evenly.
+# The * modulo * operator is used to assign players to teams in a round-robin fashion.
+    for num, player in enumerate(experienced, start=1): # Starting from 1 assigns each exp player a number
+        if num % 3 == 0:
+            panthers.append(player)
+        elif num % 2 == 0:
+            bandits.append(player)
+        else:
+            warriors.append(player)
+
+
+# This function should assign the inexperienced players to the teams with fewer players.
+# 
+    for num, player in enumerate(inexperienced, start=1):
+        if num % 3 == 0:
+            panthers.append(player)
+        elif num % 2 == 0:
+            bandits.append(player)
+        else:
+            warriors.append(player)
+
+    return panthers, bandits, warriors
+#print(draft_players(clean_data(PLAYERS)))

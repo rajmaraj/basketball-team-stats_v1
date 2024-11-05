@@ -1,6 +1,11 @@
+"""
+Data Analysis Techdegree
+Project 2 - Basketball Team Stats Tool
+--------------------------------
+"""
+
 from constants import TEAMS, PLAYERS
 # Import data from dictionaries under constants file
-
 
 """ 
 This data should be cleaned fom constants,

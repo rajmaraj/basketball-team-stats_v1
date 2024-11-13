@@ -150,6 +150,8 @@ def menu(): # Function to print the menu
             print("\nTeam: Panthers Stats\n--------------------\n") # Prints the menu
             #print("\nPlayers: ", ', '.join(team_stats(panthers)[0])) # Prints player as a string separated by comma space
             print("\nPlayers: ", ', '.join(player['name'] for player in sorted(team_stats(panthers)[0], key=lambda x: x['height']))) 
+            # Access height value in team_stats function, searches for 'height' in dictionary, then sorts lowest to highest by key value of 'height'
+            # Then sort extracts the associated 'name' of each 'height' value, finally joins values into a string and prints
             print("\nGuardians: ", ', '.join(team_stats(panthers)[1])) # Prints guardians as a string separated by comma space
             print("\nAverage Height: ", round(team_stats(panthers)[2])) # Prints rounded height 
             print("\nNumber of Players: ", int(len(team_stats(panthers)[0]))) # Prints integer or players

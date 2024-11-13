@@ -96,9 +96,6 @@ def draft_players(players): # Function designed to distribute players into 3 tea
 
     return panthers, bandits, warriors
 
-# Call to populate each team
-# draft_players function within clean_data of the PLAYERS parameter
-draft_players(clean_data(PLAYERS))
 
 def team_stats(team_name): # Function to print team stats
     team = [] # Empty list
@@ -118,7 +115,7 @@ def team_stats(team_name): # Function to print team stats
     avg_height = sum(height) / len(height) # Calculates the average height of the team
     # List players height from shortest to tallest
     short_to_tall = sorted(height)
-    return team, guardians, avg_height, inexperienced_player, experienced_player # Returns the team, guardians, and average height
+    return team, guardians, avg_height, inexperienced_player, experienced_player # Returns the team, guardians, non exp / exp and average height
 #print(team_stats(bandits)) # Prints the team stats
 
 
@@ -189,5 +186,12 @@ def menu(): # Function to print the menu
         menu() # Calls the menu function
     return input() # Returns the user input
 
+# Placing all function calls into a function called main
+def main():
+    draft_players(clean_data(PLAYERS)) # Calls the draft_players function
+    menu() # Calls the menu function
+    
+# Dunder main statement
+if __name__ == "__main__":
+    main()
 
-menu() # Calls the menu function

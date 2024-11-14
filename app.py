@@ -143,9 +143,10 @@ def menu(): # Function to print the menu
         if team_option == '1': # If the user selects 1
             print("\nTeam: Panthers Stats\n--------------------\n") # Prints the menu
             #print("\nPlayers: ", ', '.join(team_stats(panthers)[0])) # Prints player as a string separated by comma space
-            print("\nPlayers: ", ', '.join(player['name'] for player in sorted(team_stats(panthers)[0], key=lambda x: x['height']))) 
+            print("\nPlayers: ", ', '.join(player['name'] for player in sorted(team_stats(panthers)[0], key=lambda height: height['height']))) 
             # Access height value in team_stats function, searches for 'height' in dictionary, then sorts lowest to highest by key value of 'height'
             # Then sort extracts the associated 'name' of each 'height' value, finally joins values into a string and prints
+            # Key value looks for 'height', lambda height: height['height'], Sort places those values in order
             print("\nGuardians: ", ', '.join(team_stats(panthers)[1])) # Prints guardians as a string separated by comma space
             print("\nAverage Height: ", round(team_stats(panthers)[2]),"inches") # Prints rounded height 
             print("\nNumber of Players: ", int(len(team_stats(panthers)[0]))) # Prints integer or players
@@ -155,7 +156,7 @@ def menu(): # Function to print the menu
         elif team_option == '2': # If the user selects 2
             print("\nTeam: Bandits Stats\n--------------------\n") 
             # print("\nPlayers: ", ', '.join(team_stats(bandits)[0]))
-            print("\nPlayers: ", ', '.join(player['name'] for player in sorted(team_stats(bandits)[0], key=lambda x: x['height'])))
+            print("\nPlayers: ", ', '.join(player['name'] for player in sorted(team_stats(bandits)[0], key=lambda height: height['height'])))
             print("\nGuardians: ", ', '.join(team_stats(bandits)[1])) 
             print("\nAverage Height: ", round(team_stats(bandits)[2]),"inches") 
             print("\nNumber of Players: ", int(len(team_stats(bandits)[0]))) 
@@ -165,7 +166,7 @@ def menu(): # Function to print the menu
         elif team_option == '3': # If the user selects 3
             print("\nTeam: Warriors Stats\n--------------------") 
             # print("\nPlayers: ", ', '.join(team_stats(warriors)[0]))
-            print("\nPlayers: ", ', '.join(player['name'] for player in sorted(team_stats(warriors)[0], key=lambda x: x['height'])))
+            print("\nPlayers: ", ', '.join(player['name'] for player in sorted(team_stats(warriors)[0], key=lambda height: height['height'])))
             print("\nGuardians: ", ', '.join(team_stats(warriors)[1])) 
             print("\nAverage Height: ", round(team_stats(warriors)[2]),"inches")
             print("\nNumber of Players: ", int(len(team_stats(warriors)[0])))

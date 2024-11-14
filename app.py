@@ -39,7 +39,6 @@ def clean_data(players): # Using players data set
 #     return guardian_list
 # # print(guardians_list(clean_data(PLAYERS)))
 
-
 # # print just 'name' from the list of players
 # def player_list(players):
 #     player_list = []
@@ -47,8 +46,6 @@ def clean_data(players): # Using players data set
 #         player_list.append(player['name'])
 #     return player_list
 # # print(player_list(clean_data(PLAYERS)))
-
-
 
 """
 Assign players to each team so the teams are evenly balanced by total players.
@@ -64,18 +61,18 @@ def draft_players(players): # Function designed to distribute players into 3 tea
     bandits = []# Empty list
     warriors = []# Empty list
 
-    for player in players: # Iterates through all players and separates them into exp or not exp.
+    # Iterates through all players and separates them into exp or not exp.
+    for player in players: 
         if player['experience'] == True:
             experienced.append(player) # Sent to exp list
         else:
             inexperienced.append(player) # Sent to non exp list
 
-
-# This function should assign the players as evenly as possible to all three teams.
-# If there are not enough players in one of the experience levels, 
-# Then the remaining players should be assigned to the teams with fewer players.
-# The distribution method uses division to assign players to teams evenly.
-# The * modulo * operator is used to assign players to teams in a round-robin fashion.
+    # This function should assign the players as evenly as possible to all three teams.
+    # If there are not enough players in one of the experience levels, 
+    # Then the remaining players should be assigned to the teams with fewer players.
+    # The distribution method uses division to assign players to teams evenly.
+    # The * modulo * operator is used to assign players to teams in a round-robin fashion.
     for num, player in enumerate(experienced, start=1): # Starting from 1 assigns each exp player a number
         if num % 3 == 0:
             panthers.append(player)
@@ -96,8 +93,8 @@ def draft_players(players): # Function designed to distribute players into 3 tea
 
     return panthers, bandits, warriors
 
-
-def team_stats(team_name): # Function to print team stats
+# Function to print team stats
+def team_stats(team_name): 
     team = [] # Empty list
     guardians = [] # Empty list
     height = [] # Empty list 
